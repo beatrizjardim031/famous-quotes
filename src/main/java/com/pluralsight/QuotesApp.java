@@ -20,12 +20,27 @@ public class QuotesApp {
 
         };
 
-        System.out.print("Choose a number between 1 and 10: ");
-        int quoteNumber = input.nextInt();
-        int quoteIndex = quoteNumber - 1;
+
+
+
+        boolean isRunning = true;
 
         try {
-            System.out.println(quotes[quoteIndex]);
+            while (isRunning) {
+                System.out.printf("Choose a number between 1 and 10: ");
+                int quoteNumber = input.nextInt();
+                input.nextLine();
+                int quoteIndex = quoteNumber - 1;
+                System.out.println(quotes[quoteIndex]);
+                System.out.printf("%nWould you like to read another quote? yes/no: ");
+                String userChoice = input.nextLine();
+                quoteIndex = quoteNumber - 1;
+                if (userChoice.equalsIgnoreCase("no")) {
+                    isRunning = false;
+                    System.out.println("Okay... Bye!");
+                }
+            }
+
         } catch (Exception e) {
             System.out.println("SMH you chose an invalid number!!!!!");
         }
